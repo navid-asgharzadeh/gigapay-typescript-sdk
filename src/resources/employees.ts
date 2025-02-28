@@ -36,4 +36,8 @@ export const createEmployeesAPI = (httpClient: HttpClient): EmployeesAPI => ({
   async create(employee: CreateEmployeeRequest): Promise<Employee> {
     return httpClient.post<Employee>('/employees', employee);
   },
+
+  async read(externalId: string): Promise<Employee> {
+    return httpClient.get<Employee>(`/employees/${externalId}`);
+  },
 }); 

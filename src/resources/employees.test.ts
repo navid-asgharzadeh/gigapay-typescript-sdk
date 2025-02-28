@@ -101,4 +101,19 @@ describe('employees resource', () => {
       expect(response).toEqual(mockEmployee);
     });
   });
+
+  describe('read', () => {
+    beforeEach(() => {
+      // Override the mock for get to return a single employee
+      mockHttpClient.get.mockResolvedValue(mockEmployee);
+    });
+
+    it('should fetch an employee by external ID', async () => {
+      const externalId = 'd15f2078-4193-43c5-a924-f69dda7d04df';
+      const response = await employeesAPI.read(externalId);
+      
+      expect(mockHttpClient.get).toHaveBeenCalledWith(`/employees/${externalId}`);
+      expect(response).toEqual(mockEmployee);
+    });
+  });
 }); 
