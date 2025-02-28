@@ -70,6 +70,23 @@ const employeeWithDetails = await client.employees.create({
 });
 ```
 
+#### Update Employee
+
+```typescript
+// Update specific fields
+const updatedEmployee = await client.employees.update('employee-uuid', {
+  name: 'Jane Doe',
+  email: 'jane@example.com',
+});
+
+// Partial update
+const partialUpdate = await client.employees.update('employee-uuid', {
+  metadata: {
+    department: 'Sales',
+  },
+});
+```
+
 ### Error Handling
 
 ```typescript

@@ -26,4 +26,18 @@ export interface EmployeesAPI {
    * @param externalId - The external ID of the employee
    */
   read(externalId: string): Promise<Employee>;
+
+  /**
+   * Update an employee by their external ID
+   * @param externalId - The external ID of the employee to update
+   * @param data - The employee data to update
+   */
+  update(externalId: string, data: {
+    name?: string;
+    cellphone_number?: string;
+    email?: string | null;
+    country?: string;
+    metadata?: Record<string, any>;
+    claimed_at?: string | null;
+  }): Promise<Employee>;
 } 

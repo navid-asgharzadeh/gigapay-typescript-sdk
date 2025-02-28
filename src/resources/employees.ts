@@ -40,4 +40,15 @@ export const createEmployeesAPI = (httpClient: HttpClient): EmployeesAPI => ({
   async read(externalId: string): Promise<Employee> {
     return httpClient.get<Employee>(`/employees/${externalId}`);
   },
+
+  async update(externalId: string, data: {
+    name?: string;
+    cellphone_number?: string;
+    email?: string | null;
+    country?: string;
+    metadata?: Record<string, any>;
+    claimed_at?: string | null;
+  }): Promise<Employee> {
+    return httpClient.put<Employee>(`/employees/${externalId}`, data);
+  },
 }); 
