@@ -35,6 +35,7 @@ interface HttpClient {
   get: <T>(endpoint: string) => Promise<T>;
   post: <T>(endpoint: string, body: unknown) => Promise<T>;
   put: <T>(endpoint: string, body: unknown) => Promise<T>;
+  patch: <T>(endpoint: string, body: unknown) => Promise<T>;
   delete: <T>(endpoint: string) => Promise<T>;
 }
 
@@ -78,6 +79,7 @@ const createHttpClient = (config: GigapayConfig): HttpClient => {
     get: <T>(endpoint: string) => request<T>('GET', endpoint),
     post: <T>(endpoint: string, body: unknown) => request<T>('POST', endpoint, body),
     put: <T>(endpoint: string, body: unknown) => request<T>('PUT', endpoint, body),
+    patch: <T>(endpoint: string, body: unknown) => request<T>('PATCH', endpoint, body),
     delete: <T>(endpoint: string) => request<T>('DELETE', endpoint),
   };
 };

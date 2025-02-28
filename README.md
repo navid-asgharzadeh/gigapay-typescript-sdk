@@ -13,7 +13,7 @@ A modern, type-safe TypeScript SDK for the Gigapay API.
 ## Installation
 
 ```bash
-npm gigapay-typescript-sdk
+npm install gigapay-typescript-sdk
 ```
 
 ## Quick Start
