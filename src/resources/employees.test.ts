@@ -28,6 +28,7 @@ const mockHttpClient = {
   get: jest.fn().mockResolvedValue(mockListResponse),
   post: jest.fn().mockResolvedValue(mockEmployee),
   put: jest.fn(),
+  patch: jest.fn(),
   delete: jest.fn(),
 };
 
@@ -127,6 +128,7 @@ describe('employees resource', () => {
           name: 'Updated Name',
           email: 'updated@example.com'
         }),
+        patch: jest.fn(),
         delete: jest.fn(),
       };
 
@@ -158,6 +160,7 @@ describe('employees resource', () => {
           ...mockEmployee,
           metadata: { department: 'Engineering' }
         }),
+        patch: jest.fn(),
         delete: jest.fn(),
       };
 
@@ -167,6 +170,70 @@ describe('employees resource', () => {
       });
 
       expect(mockHttpClient.put).toHaveBeenCalledWith(
+        '/employees/test-id',
+        {
+          metadata: { department: 'Engineering' }
+        }
+      );
+      expect(response).toEqual({
+        ...mockEmployee,
+        metadata: { department: 'Engineering' }
+      });
+    });
+  });
+
+  describe('partialUpdate', () => {
+    it('should partially update an employee', async () => {
+      const mockHttpClient = {
+        get: jest.fn(),
+        post: jest.fn(),
+        put: jest.fn(),
+        patch: jest.fn().mockResolvedValue({
+          ...mockEmployee,
+          name: 'Updated Name',
+          email: 'updated@example.com'
+        }),
+        delete: jest.fn(),
+      };
+
+      const api = createEmployeesAPI(mockHttpClient);
+      const response = await api.partialUpdate('test-id', {
+        name: 'Updated Name',
+        email: 'updated@example.com'
+      });
+
+      expect(mockHttpClient.patch).toHaveBeenCalledWith(
+        '/employees/test-id',
+        {
+          name: 'Updated Name',
+          email: 'updated@example.com'
+        }
+      );
+      expect(response).toEqual({
+        ...mockEmployee,
+        name: 'Updated Name',
+        email: 'updated@example.com'
+      });
+    });
+
+    it('should handle single field updates', async () => {
+      const mockHttpClient = {
+        get: jest.fn(),
+        post: jest.fn(),
+        put: jest.fn(),
+        patch: jest.fn().mockResolvedValue({
+          ...mockEmployee,
+          metadata: { department: 'Engineering' }
+        }),
+        delete: jest.fn(),
+      };
+
+      const api = createEmployeesAPI(mockHttpClient);
+      const response = await api.partialUpdate('test-id', {
+        metadata: { department: 'Engineering' }
+      });
+
+      expect(mockHttpClient.patch).toHaveBeenCalledWith(
         '/employees/test-id',
         {
           metadata: { department: 'Engineering' }

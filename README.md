@@ -73,14 +73,14 @@ const employeeWithDetails = await client.employees.create({
 #### Update Employee
 
 ```typescript
-// Update specific fields
+// Full update (PUT)
 const updatedEmployee = await client.employees.update('employee-uuid', {
   name: 'Jane Doe',
   email: 'jane@example.com',
 });
 
-// Partial update
-const partialUpdate = await client.employees.update('employee-uuid', {
+// Partial update (PATCH)
+const partiallyUpdatedEmployee = await client.employees.partialUpdate('employee-uuid', {
   metadata: {
     department: 'Sales',
   },

@@ -40,4 +40,18 @@ export interface EmployeesAPI {
     metadata?: Record<string, any>;
     claimed_at?: string | null;
   }): Promise<Employee>;
+
+  /**
+   * Partially update an employee by their external ID using PATCH
+   * @param externalId - The external ID of the employee to update
+   * @param data - The partial employee data to update
+   */
+  partialUpdate(externalId: string, data: {
+    name?: string;
+    cellphone_number?: string;
+    email?: string | null;
+    country?: string;
+    metadata?: Record<string, any>;
+    claimed_at?: string | null;
+  }): Promise<Employee>;
 } 
