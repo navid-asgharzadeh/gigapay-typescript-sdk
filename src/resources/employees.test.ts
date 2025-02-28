@@ -245,4 +245,13 @@ describe('employees resource', () => {
       });
     });
   });
+
+  describe('delete', () => {
+    it('should delete an employee', async () => {
+      const externalId = 'test-id';
+      await employeesAPI.delete(externalId);
+      
+      expect(mockHttpClient.delete).toHaveBeenCalledWith(`/employees/${externalId}`);
+    });
+  });
 }); 

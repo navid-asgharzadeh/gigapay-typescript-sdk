@@ -62,4 +62,8 @@ export const createEmployeesAPI = (httpClient: HttpClient): EmployeesAPI => ({
   }): Promise<Employee> {
     return httpClient.patch<Employee>(`/employees/${externalId}`, data);
   },
+
+  async delete(externalId: string): Promise<void> {
+    return httpClient.delete(`/employees/${externalId}`);
+  },
 }); 

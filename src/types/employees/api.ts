@@ -54,4 +54,10 @@ export interface EmployeesAPI {
     metadata?: Record<string, any>;
     claimed_at?: string | null;
   }): Promise<Employee>;
+
+  /**
+   * Delete an employee by their external ID
+   * @param externalId - The external ID of the employee to delete
+   */
+  delete(externalId: string): Promise<void>;
 } 
