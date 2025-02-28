@@ -254,4 +254,28 @@ describe('employees resource', () => {
       expect(mockHttpClient.delete).toHaveBeenCalledWith(`/employees/${externalId}`);
     });
   });
+
+  describe('resend', () => {
+    it('should resend an invitation', async () => {
+      const externalId = 'test-id';
+      await employeesAPI.resend(externalId);
+      
+      expect(mockHttpClient.put).toHaveBeenCalledWith(
+        `/employees/${externalId}/resend`,
+        {}
+      );
+    });
+  });
+
+  describe('resendPartialUpdate', () => {
+    it('should partially resend an invitation', async () => {
+      const externalId = 'test-id';
+      await employeesAPI.resendPartialUpdate(externalId);
+      
+      expect(mockHttpClient.patch).toHaveBeenCalledWith(
+        `/employees/${externalId}/resend`,
+        {}
+      );
+    });
+  });
 }); 

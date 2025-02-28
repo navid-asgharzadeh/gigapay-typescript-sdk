@@ -66,4 +66,12 @@ export const createEmployeesAPI = (httpClient: HttpClient): EmployeesAPI => ({
   async delete(externalId: string): Promise<void> {
     return httpClient.delete(`/employees/${externalId}`);
   },
+
+  async resend(externalId: string): Promise<void> {
+    return httpClient.put<void>(`/employees/${externalId}/resend`, {});
+  },
+
+  async resendPartialUpdate(externalId: string): Promise<void> {
+    return httpClient.patch<void>(`/employees/${externalId}/resend`, {});
+  },
 }); 

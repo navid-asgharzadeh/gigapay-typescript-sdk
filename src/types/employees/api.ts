@@ -60,4 +60,16 @@ export interface EmployeesAPI {
    * @param externalId - The external ID of the employee to delete
    */
   delete(externalId: string): Promise<void>;
+
+  /**
+   * Resend an invitation to an employee
+   * @param externalId - The external ID of the employee
+   */
+  resend(externalId: string): Promise<void>;
+
+  /**
+   * Partially resend an invitation to an employee
+   * @param externalId - The external ID of the employee
+   */
+  resendPartialUpdate(externalId: string): Promise<void>;
 } 
