@@ -87,6 +87,23 @@ const partiallyUpdatedEmployee = await client.employees.partialUpdate('employee-
 });
 ```
 
+#### Delete Employee
+
+```typescript
+// Delete an employee by ID
+await client.employees.delete('employee-uuid');
+```
+
+#### Resend Invitations
+
+```typescript
+// Resend full invitation
+await client.employees.resend('employee-uuid');
+
+// Resend partial invitation
+await client.employees.resendPartialUpdate('employee-uuid');
+```
+
 ### Error Handling
 
 ```typescript
