@@ -14,7 +14,8 @@
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "test": "jest",
     "prepublishOnly": "npm run test && npm run typecheck && npm run build",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "release": "pnpm run build && changeset publish"
   },
   "keywords": [
     "gigapay",
