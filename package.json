@@ -1,5 +1,5 @@
 {
-  "name": "gigapay-typescript-sdk",
+  "name": "@iamnavidev/gigapay-typescript-sdk",
   "version": "0.0.2",
   "description": "A modern, type-safe TypeScript SDK for the Gigapay API",
   "main": "dist/index.js",
@@ -24,16 +24,16 @@
     "typescript",
     "payments"
   ],
-  "author": "Your Name",
+  "author": "Navid Asgharzadeh",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/gigapay-typescript-sdk.git"
+    "url": "git+https://github.com/navid-asgharzadeh/gigapay-typescript-sdk.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/gigapay-typescript-sdk/issues"
+    "url": "https://github.com/navid-asgharzadeh/gigapay-typescript-sdk/issues"
   },
-  "homepage": "https://github.com/yourusername/gigapay-typescript-sdk#readme",
+  "homepage": "https://github.com/navid-asgharzadeh/gigapay-typescript-sdk#readme",
   "dependencies": {
     "cross-fetch": "^4.0.0"
   },
