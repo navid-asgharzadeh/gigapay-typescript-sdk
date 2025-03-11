@@ -51,25 +51,11 @@ export const createEmployeesAPI = (httpClient: HttpClient): EmployeesAPI => ({
     return httpClient.get<Employee>(`/employees/${externalId}`);
   },
 
-  async update(externalId: string, data: {
-    name?: string;
-    cellphone_number?: string;
-    email?: string | null;
-    country?: string;
-    metadata?: Record<string, any>;
-    claimed_at?: string | null;
-  }): Promise<Employee> {
+  async update(externalId: string, data: Partial<CreateEmployeeRequest>): Promise<Employee> {
     return httpClient.put<Employee>(`/employees/${externalId}`, data);
   },
 
-  async partialUpdate(externalId: string, data: {
-    name?: string;
-    cellphone_number?: string;
-    email?: string | null;
-    country?: string;
-    metadata?: Record<string, any>;
-    claimed_at?: string | null;
-  }): Promise<Employee> {
+  async partialUpdate(externalId: string, data: Partial<CreateEmployeeRequest>): Promise<Employee> {
     return httpClient.patch<Employee>(`/employees/${externalId}`, data);
   },
 
@@ -78,10 +64,10 @@ export const createEmployeesAPI = (httpClient: HttpClient): EmployeesAPI => ({
   },
 
   async resend(externalId: string): Promise<void> {
-    return httpClient.put<void>(`/employees/${externalId}/resend`, {});
+    return httpClient.post(`/employees/${externalId}/resend`, {});
   },
 
   async resendPartialUpdate(externalId: string): Promise<void> {
-    return httpClient.patch<void>(`/employees/${externalId}/resend`, {});
+    return httpClient.post(`/employees/${externalId}/resend-partial`, {});
   },
 }); 

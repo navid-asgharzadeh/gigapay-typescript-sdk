@@ -288,7 +288,7 @@ describe('employees resource', () => {
       const externalId = 'test-id';
       await employeesAPI.resend(externalId);
       
-      expect(mockHttpClient.put).toHaveBeenCalledWith(
+      expect(mockHttpClient.post).toHaveBeenCalledWith(
         `/employees/${externalId}/resend`,
         {}
       );
@@ -300,8 +300,8 @@ describe('employees resource', () => {
       const externalId = 'test-id';
       await employeesAPI.resendPartialUpdate(externalId);
       
-      expect(mockHttpClient.patch).toHaveBeenCalledWith(
-        `/employees/${externalId}/resend`,
+      expect(mockHttpClient.post).toHaveBeenCalledWith(
+        `/employees/${externalId}/resend-partial`,
         {}
       );
     });

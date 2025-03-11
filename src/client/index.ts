@@ -2,6 +2,7 @@ import 'cross-fetch/polyfill';
 import type { GigapayConfig, GigapayClient } from '../types';
 import { GigapayError } from '../errors/GigapayError';
 import { createEmployeesAPI } from '../resources/employees';
+import { createIntegrationsAPI } from '../resources/integrations';
 
 const DEFAULT_BASE_URL = 'https://api.gigapay.se/v2';
 const DEFAULT_RETRY_COUNT = 3;
@@ -89,5 +90,6 @@ export const createClient = (config: GigapayConfig): GigapayClient => {
 
   return {
     employees: createEmployeesAPI(httpClient),
+    integrations: createIntegrationsAPI(httpClient),
   };
 }; 
