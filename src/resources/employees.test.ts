@@ -53,6 +53,34 @@ describe('employees resource', () => {
       
       expect(mockHttpClient.get).toHaveBeenCalledWith('/employees?offset=20&limit=20');
     });
+
+    it('should fetch employees with filter parameters', async () => {
+      const options = {
+        name: 'John',
+        email: 'john@example.com',
+        cellphone_number: '+46701234567',
+        search: 'Engineering',
+      };
+      await employeesAPI.list(options);
+      
+      expect(mockHttpClient.get).toHaveBeenCalledWith(
+        '/employees?cellphone_number=%2B46701234567&email=john%40example.com&name=John&search=Engineering'
+      );
+    });
+
+    it('should fetch employees with date filters', async () => {
+      const options = {
+        created_at: '2024-02-28',
+        notified_at: '2024-02-28',
+        claimed_at: '2024-02-28',
+        verified_at: '2024-02-28',
+      };
+      await employeesAPI.list(options);
+      
+      expect(mockHttpClient.get).toHaveBeenCalledWith(
+        '/employees?claimed_at=2024-02-28&created_at=2024-02-28&notified_at=2024-02-28&verified_at=2024-02-28'
+      );
+    });
   });
 
   describe('create', () => {

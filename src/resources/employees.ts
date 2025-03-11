@@ -4,6 +4,7 @@ import type {
   CreateEmployeeRequest,
   ListEmployeesResponse,
   EmployeesAPI,
+  ListEmployeesOptions,
 } from '../types/employees';
 
 export const createEmployeesAPI = (httpClient: HttpClient): EmployeesAPI => ({
@@ -13,14 +14,23 @@ export const createEmployeesAPI = (httpClient: HttpClient): EmployeesAPI => ({
    * @returns List of employees
    */
   async list(
-    options: {
-      page?: number;
-      perPage?: number;
-    } = {}
+    options: ListEmployeesOptions = {}
   ): Promise<ListEmployeesResponse> {
     const params = new URLSearchParams();
-    if (options.page) params.append('offset', ((options.page - 1) * (options.perPage || 10)).toString());
-    if (options.perPage) params.append('limit', options.perPage.toString());
+    
+    // Add all parameters
+    const entries = Object.entries(options).filter(([_, value]) => value !== undefined);
+    
+    // Sort entries alphabetically and add to params
+    entries.sort(([a], [b]) => a.localeCompare(b)).forEach(([key, value]) => {
+      if (key === 'page') {
+        params.append('offset', ((value as number - 1) * (options.perPage || 10)).toString());
+      } else if (key === 'perPage') {
+        params.append('limit', value.toString());
+      } else {
+        params.append(key, value.toString());
+      }
+    });
 
     const queryString = params.toString();
     const endpoint = `/employees${queryString ? `?${queryString}` : ''}`;

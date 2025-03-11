@@ -3,17 +3,25 @@ import { Employee, CreateEmployeeRequest } from './models';
 
 export type ListEmployeesResponse = PaginatedResponse<Employee>;
 
+export interface ListEmployeesOptions {
+  page?: number;
+  perPage?: number;
+  cellphone_number?: string;
+  name?: string;
+  search?: string;
+  email?: string;
+  created_at?: string;
+  notified_at?: string;
+  claimed_at?: string;
+  verified_at?: string;
+}
+
 export interface EmployeesAPI {
   /**
-   * List employees with pagination support
-   * @param options Pagination options
+   * List all employees with optional filters
+   * @param options - Pagination and filter options
    */
-  list(options?: {
-    /** Page number (1-based) */
-    page?: number;
-    /** Number of items per page */
-    perPage?: number;
-  }): Promise<ListEmployeesResponse>;
+  list(options?: ListEmployeesOptions): Promise<ListEmployeesResponse>;
 
   /**
    * Create a new employee
