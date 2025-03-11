@@ -1,6 +1,7 @@
 export * from './common';
 export * from './employees';
 export * from './integrations';
+export * from './invoices';
 
 export interface GigapayConfig {
   apiKey: string;
@@ -11,4 +12,5 @@ export interface GigapayConfig {
 export interface GigapayClient {
   employees: import('./employees').EmployeesAPI;
   integrations: import('./integrations').IntegrationsAPI;
+  invoices: import('./invoices').InvoicesAPI;
 } 
