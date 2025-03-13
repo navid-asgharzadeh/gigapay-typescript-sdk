@@ -1,5 +1,11 @@
 # gigapay-typescript-sdk
 
+## 0.2.2
+
+### Patch Changes
+
+- 1c6a2ac: update readme
+
 ## 0.2.1
 
 ### Patch Changes

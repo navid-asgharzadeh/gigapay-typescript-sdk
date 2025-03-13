@@ -1,6 +1,6 @@
 {
   "name": "@iamnavidev/gigapay-typescript-sdk",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A modern, type-safe TypeScript SDK for the Gigapay API",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
