@@ -1,5 +1,11 @@
 # gigapay-typescript-sdk
 
+## 0.2.1
+
+### Patch Changes
+
+- 7929719: remove the partial resend method
+
 ## 0.2.0
 
 ### Minor Changes
