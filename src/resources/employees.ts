@@ -64,10 +64,6 @@ export const createEmployeesAPI = (httpClient: HttpClient): EmployeesAPI => ({
   },
 
   async resend(externalId: string): Promise<void> {
-    return httpClient.post(`/employees/${externalId}/resend`, {});
-  },
-
-  async resendPartialUpdate(externalId: string): Promise<void> {
-    return httpClient.post(`/employees/${externalId}/resend-partial`, {});
+    return httpClient.patch(`/employees/${externalId}/resend`, {});
   },
 }); 

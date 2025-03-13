@@ -288,22 +288,11 @@ describe('employees resource', () => {
       const externalId = 'test-id';
       await employeesAPI.resend(externalId);
       
-      expect(mockHttpClient.post).toHaveBeenCalledWith(
+      expect(mockHttpClient.patch).toHaveBeenCalledWith(
         `/employees/${externalId}/resend`,
         {}
       );
     });
   });
 
-  describe('resendPartialUpdate', () => {
-    it('should partially resend an invitation', async () => {
-      const externalId = 'test-id';
-      await employeesAPI.resendPartialUpdate(externalId);
-      
-      expect(mockHttpClient.post).toHaveBeenCalledWith(
-        `/employees/${externalId}/resend-partial`,
-        {}
-      );
-    });
-  });
 }); 
